@@ -12,7 +12,7 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include <stdexcept>
-
+#include "../utils/glError.hpp"
 
 using namespace std;
 
@@ -42,14 +42,15 @@ Application::Application():
     {
         throw std::runtime_error("Couldn't init GLFW");
     }
-
+  
     // setting the opengl version
     int major = 3;
-    int minor = 2;
+    int minor = 3;
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, major);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, minor);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    //glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_COMPAT_PROFILE);
 
     // create the window
     window = glfwCreateWindow(width,height,title.c_str(),NULL,NULL);
@@ -68,21 +69,22 @@ Application::Application():
 	{
         glfwTerminate();
         throw std::runtime_error(string("Could initialize GLEW, error = ") + (const char*)glewGetErrorString(err));
-	}
-
+	}   
 
     // get version info
-    const GLubyte* renderer = glGetString (GL_RENDERER);
+    const GLubyte* renderer = glGetString (GL_RENDERER);    
     const GLubyte* version = glGetString (GL_VERSION); 
     cout << "Renderer: " << renderer << endl;
     cout << "OpenGL version supported " << version << endl;
-
+    
     // opengl configuration
     glEnable (GL_DEPTH_TEST); // enable depth-testing
     glDepthFunc (GL_LESS); // depth-testing interprets a smaller value as "closer"
 
     // vsync
     //glfwSwapInterval(false);
+
+    
 
 }
 

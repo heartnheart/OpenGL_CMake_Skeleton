@@ -10,6 +10,7 @@
 #define APPLICATION3D_9YCQ0OVR
 
 #define GLM_FORCE_RADIANS
+#define GLM_ENABLE_EXPERIMENTAL
 #include <glm/glm.hpp>
 #include "system/Application.hpp"
 #include "graphic/Shader.hpp"
