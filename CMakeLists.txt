@@ -1,7 +1,11 @@
 # ┌──────────────────────────────────────────────────────────────────┐
 # │  Projects Settings                                               │
 # └──────────────────────────────────────────────────────────────────┘
-cmake_minimum_required (VERSION 2.8)
+cmake_minimum_required (VERSION 3.6)
+if(WIN32)
+  set(CMAKE_SYSTEM_VERSION 8.1 CACHE STRING "Target Platform Version")
+endif()
+
 project (opengl-skeleton)
 
 # ┌──────────────────────────────────────────────────────────────────┐
@@ -35,3 +39,6 @@ include_directories(lib/glm)
 file(GLOB_RECURSE source_files ${PROJECT_SOURCE_DIR}/src/*)
 add_executable(main ${source_files})
 target_link_libraries(main glfw ${GLFW_LIBRARIES} libglew_static)
+if(WIN32)
+  set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT main)
+endif()
