@@ -16,8 +16,9 @@
 
 #include <GLFW/glfw3.h>
 
-#define SHADER_DIR "../shader/"
-
+#ifndef SHADER_DIR
+#  define SHADER_DIR "../shader"
+#endif
 
 struct VertexType
 {

@@ -36,6 +36,7 @@ include_directories(lib/glm)
 # ┌──────────────────────────────────────────────────────────────────┐
 # │  Build executable                                                │
 # └──────────────────────────────────────────────────────────────────┘
+add_definitions(-DSHADER_DIR="${PROJECT_SOURCE_DIR}/shader")
 file(GLOB_RECURSE source_files ${PROJECT_SOURCE_DIR}/src/*)
 add_executable(main ${source_files})
 target_link_libraries(main glfw ${GLFW_LIBRARIES} libglew_static)
