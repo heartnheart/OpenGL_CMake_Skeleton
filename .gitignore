@@ -1,1 +1,4 @@
 /build-vs2015-x64
+/.dir-locals.el
+/build-XCode/*
+/build
